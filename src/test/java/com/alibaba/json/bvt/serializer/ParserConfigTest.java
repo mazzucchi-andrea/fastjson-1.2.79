@@ -1,28 +1,56 @@
 package com.alibaba.json.bvt.serializer;
 
-import org.junit.Assert;
-
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.parser.ParserConfig;
+import org.junit.Assert;
+import org.junit.Test;
 
-import junit.framework.TestCase;
+public class ParserConfigTest {
 
-public class ParserConfigTest extends TestCase {
+    private int expected;
 
-    public void test_0() throws Exception {
+    private String jsonStr;
+
+    public ParserConfigTest() {
+
+        configure();
+
+    }
+
+    private void configure() {
+
+        this.expected = 123;
+
+        this.jsonStr = "{\"value\":123}";
+
+    }
+
+    @Test
+
+    public void test_0() {
+
         ParserConfig config = new ParserConfig();
-        config.getDeserializers();
+
+        Assert.assertNotNull(config.getDeserializers());
+
     }
-    
-    
-    public void test_1() throws Exception {
+
+    @Test
+
+    public void test_1() {
+
         ParserConfig config = new ParserConfig(Thread.currentThread().getContextClassLoader());
-        
-        Model model = JSON.parseObject("{\"value\":123}", Model.class, config);
-        Assert.assertEquals(123, model.value);
+
+        Model model = JSON.parseObject(jsonStr, Model.class, config);
+
+        Assert.assertEquals(expected, model.value);
+
     }
-    
+
     public static class Model {
+
         public int value;
+
     }
+
 }
