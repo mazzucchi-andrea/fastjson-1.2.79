@@ -26,7 +26,6 @@ public class ParserConfigTest {
     }
 
     @Test
-
     public void test_0() {
 
         ParserConfig config = new ParserConfig();
@@ -36,7 +35,6 @@ public class ParserConfigTest {
     }
 
     @Test
-
     public void test_1() {
 
         ParserConfig config = new ParserConfig(Thread.currentThread().getContextClassLoader());
